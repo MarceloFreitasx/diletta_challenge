@@ -7,6 +7,7 @@ import '../../domain/params/params.dart';
 import '../../domain/usecases/products_list.dart';
 import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';
+import '../navigator/navigator.dart';
 
 class HomeControllerImpl extends GetxController
     with LoadingManager, DebouncerManager, PaginationManager
@@ -52,6 +53,11 @@ class HomeControllerImpl extends GetxController
   @override
   void onShoppingCartTap() {
     // TODO: implement onShoppingCartTap
+  }
+
+  @override
+  void onProductTap(ProductEntity item) {
+    Get.toNamed(AppRoutes.details, arguments: item);
   }
 
   @override

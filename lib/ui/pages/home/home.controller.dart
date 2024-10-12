@@ -6,4 +6,5 @@ abstract class HomeController with LoadingMixin, DebouncerMixin, PaginationMixin
 
   void onFavoriteTap();
   void onShoppingCartTap();
+  void onProductTap(ProductEntity item);
 }
