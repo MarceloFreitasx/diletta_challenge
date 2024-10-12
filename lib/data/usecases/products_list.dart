@@ -3,14 +3,14 @@ import '../../domain/repositories/repositories.dart';
 import '../../domain/usecases/usecases.dart';
 
 class GetProductsListUseCaseImpl implements GetProductsListUseCase {
-  GetProductsListUseCaseImpl({required this.productRepository});
+  GetProductsListUseCaseImpl({required this.remoteRepository});
 
-  final ProductRepository productRepository;
+  final ProductRepository remoteRepository;
 
   @override
   Future<List<ProductEntity>> execute() async {
     try {
-      return await productRepository.getProducts();
+      return await remoteRepository.getProducts();
     } catch (_) {
       rethrow;
     }
