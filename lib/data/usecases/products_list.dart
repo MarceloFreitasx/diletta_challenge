@@ -1,4 +1,5 @@
 import '../../domain/entities/entities.dart';
+import '../../domain/params/params.dart';
 import '../../domain/repositories/repositories.dart';
 import '../../domain/usecases/usecases.dart';
 
@@ -8,9 +9,9 @@ class GetProductsListUseCaseImpl implements GetProductsListUseCase {
   final ProductRepository remoteRepository;
 
   @override
-  Future<List<ProductEntity>> execute() async {
+  Future<List<ProductEntity>> execute(OptionsParams options) async {
     try {
-      return await remoteRepository.getProducts();
+      return await remoteRepository.getProducts(options);
     } catch (_) {
       rethrow;
     }

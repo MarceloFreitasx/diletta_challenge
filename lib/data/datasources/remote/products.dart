@@ -1,4 +1,5 @@
 import '../../../domain/entities/entities.dart';
+import '../../../domain/params/params.dart';
 import '../../../domain/repositories/repositories.dart';
 import '../../helpers/helpers.dart';
 import '../../models/models.dart';
@@ -10,11 +11,12 @@ class RemoteProductsDataSource implements ProductRepository {
   final HttpClient httpClient;
 
   @override
-  Future<List<ProductEntity>> getProducts() async {
+  Future<List<ProductEntity>> getProducts(OptionsParams options) async {
     try {
       final request = await httpClient.request(
         method: HttpMethod.get,
         url: "/products",
+        data: options.toMap(),
       );
 
       final data = request.data as List<dynamic>;
