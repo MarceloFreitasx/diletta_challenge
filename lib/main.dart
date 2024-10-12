@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'di/di.dart';
 import 'env/env.dart';
 import 'presentation/navigator/navigator.dart';
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Experian Challenge',
       getPages: PagesRoutes.routes,
       initialRoute: PagesRoutes.initial,
+      initialBinding: AppBindings(),
     );
   }
 }
