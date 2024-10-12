@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../data/services/services.dart';
+import '../infra/infra.dart';
 import '../main.dart';
 
 class Env {
@@ -15,6 +18,11 @@ class Env {
 
   Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
+    await initServices();
     runApp(const MyApp());
+  }
+
+  Future<void> initServices() async {
+    await Get.putAsync<LocalStorageClient>(() => LocalStorageService("wishlist").init());
   }
 }

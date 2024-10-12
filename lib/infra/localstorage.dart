@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../data/services/services.dart';
 
 class LocalStorageService implements LocalStorageClient {
-  SharedPreferences? _box;
+  late SharedPreferences _box;
   final String key;
 
   LocalStorageService(this.key) {
@@ -18,15 +18,19 @@ class LocalStorageService implements LocalStorageClient {
   @override
   String? read() {
     try {
-      return _box?.getString(key);
-    } catch (_) {}
-    return null;
+      final result = _box.getString(key);
+      return result;
+    } catch (_) {
+      rethrow;
+    }
   }
 
   @override
-  void write(String value) {
+  void write(String value) async {
     try {
-      _box?.setString(key, value);
-    } catch (_) {}
+      await _box.setString(key, value);
+    } catch (_) {
+      rethrow;
+    }
   }
 }

@@ -11,7 +11,6 @@ class AppBindings extends Bindings {
   void dependencies() {
     //? Services
     Get.put<HttpClient>(HttpService());
-    Get.put<LocalStorageClient>(LocalStorageService("wishlist"));
 
     //? Repositories
     RepositoriesBindings.init();

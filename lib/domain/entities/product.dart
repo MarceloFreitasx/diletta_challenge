@@ -7,7 +7,7 @@ part 'product.g.dart';
 
 @immutable
 @JsonSerializable()
-class ProductEntity {
+class ProductEntity extends Object {
   final int? id;
   final String? title;
   final double? price;
@@ -33,4 +33,12 @@ class ProductEntity {
   factory ProductEntity.fromJson(Map<String, dynamic> json) => _$ProductEntityFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductEntityToJson(this);
+
+  @override
+  bool operator ==(Object other) {
+    return other is ProductEntity && other.id == id;
+  }
+
+  @override
+  int get hashCode => id.hashCode;
 }

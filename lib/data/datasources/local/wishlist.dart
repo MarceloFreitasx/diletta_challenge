@@ -12,10 +12,7 @@ class LocalWishlistDataSource implements WishlistRepository {
   @override
   Future<List<ProductEntity>> addProductToWishlist(ProductEntity product) async {
     try {
-      final request = client.read();
-      if (request == null) return [];
-
-      final result = stringToEntity(request);
+      final result = await getWishlistedProducts();
       result.add(product);
       client.write(jsonEncode(result.map((e) => e.toJson()).toList()));
       return result;
@@ -27,10 +24,7 @@ class LocalWishlistDataSource implements WishlistRepository {
   @override
   Future<List<ProductEntity>> removeProductToWishlist(ProductEntity product) async {
     try {
-      final request = client.read();
-      if (request == null) return [];
-
-      final result = stringToEntity(request);
+      final result = await getWishlistedProducts();
       result.removeWhere((element) => element.id == product.id);
       client.write(jsonEncode(result.map((e) => e.toJson()).toList()));
       return result;
@@ -44,15 +38,14 @@ class LocalWishlistDataSource implements WishlistRepository {
     try {
       final request = client.read();
       if (request == null) return [];
-
-      return stringToEntity(request);
+      return localStringToEntityList(request);
     } catch (_) {
       rethrow;
     }
   }
 
-  List<ProductEntity> stringToEntity(String request) {
-    final data = jsonDecode(request);
+  List<ProductEntity> localStringToEntityList(String request) {
+    final data = jsonDecode(request) as List<dynamic>;
     return data.map((element) => ProductEntity.fromJson(element)).toList();
   }
 }
