@@ -14,5 +14,9 @@ class ControllersBindings {
       () => DetailsControllerImpl(),
       fenix: true,
     );
+    Get.lazyPut<WishlistController>(
+      () => WishlistControllerImpl(),
+      fenix: true,
+    );
   }
 }

@@ -25,9 +25,9 @@ class HomePage extends GetView<HomeController> {
                     child: const Icon(Icons.favorite_border_rounded),
                   ),
                 ),
-                IconButton(
-                  onPressed: controller.onShoppingCartTap,
-                  icon: const Icon(Icons.shopping_cart),
+                const IconButton(
+                  icon: Icon(Icons.shopping_cart),
+                  onPressed: null,
                 ),
               ],
             ),

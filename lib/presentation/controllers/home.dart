@@ -47,12 +47,7 @@ class HomeControllerImpl extends GetxController
 
   @override
   void onFavoriteTap() {
-    // TODO: implement onFavoriteTap
-  }
-
-  @override
-  void onShoppingCartTap() {
-    // TODO: implement onShoppingCartTap
+    Get.toNamed(AppRoutes.wishlist);
   }
 
   @override

@@ -1,7 +1,6 @@
 import '../../../domain/entities/entities.dart';
-import '../../../domain/mixins/mixins.dart';
 
-abstract class HomeController with LoadingMixin, DebouncerMixin, PaginationMixin {
+abstract class WishlistController {
   List<ProductEntity> get products;
 
   void onFavoriteTap();

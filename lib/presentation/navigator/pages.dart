@@ -11,5 +11,6 @@ class PagesRoutes {
   static final routes = [
     GetPage(name: AppRoutes.home, page: () => const HomePage()),
     GetPage(name: AppRoutes.details, page: () => const DetailsPage()),
+    GetPage(name: AppRoutes.wishlist, page: () => const WishlistPage()),
   ];
 }
