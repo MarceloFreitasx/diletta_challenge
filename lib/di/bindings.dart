@@ -2,12 +2,9 @@ import 'package:get/get.dart';
 
 import '../data/datasources/datasources.dart';
 import '../data/services/services.dart';
-import '../data/usecases/usecases.dart';
 import '../domain/repositories/repositories.dart';
-import '../domain/usecases/usecases.dart';
 import '../infra/infra.dart';
-import '../presentation/controllers/controllers.dart';
-import '../ui/pages/pages.dart';
+import 'di.dart';
 
 class AppBindings extends Bindings {
   @override
@@ -22,15 +19,8 @@ class AppBindings extends Bindings {
     );
 
     //? UseCases
-    Get.lazyPut<GetProductsListUseCase>(
-      () => GetProductsListUseCaseImpl(remoteRepository: Get.find<ProductRepository>()),
-      fenix: true,
-    );
-
+    UseCasesBindings.init();
     //? Controllers
-    Get.lazyPut<HomeController>(
-      () => HomeControllerImpl(Get.find<GetProductsListUseCase>()),
-      fenix: true,
-    );
+    ControllersBindings.init();
   }
 }
