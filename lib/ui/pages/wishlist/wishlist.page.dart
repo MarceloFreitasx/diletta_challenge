@@ -19,6 +19,18 @@ class WishlistPage extends GetView<WishlistController> {
       ),
       body: CustomScrollView(
         slivers: [
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 24).copyWith(bottom: 16),
+            sliver: SliverToBoxAdapter(
+              child: TextFieldInput(
+                controller: controller.searchController,
+                hintText: "Search...",
+                prefixIcon: Icons.search,
+                onChanged: (_) => controller.onSearch(),
+                onEditingComplete: controller.onSearch,
+              ),
+            ),
+          ),
           Obx(() => SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 sliver: SliverGrid.builder(

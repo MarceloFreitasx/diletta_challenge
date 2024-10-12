@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../../domain/entities/product.dart';
 import '../../domain/params/params.dart';
-import '../../domain/services/wishlist.dart';
+import '../../domain/services/services.dart';
 import '../../domain/usecases/products_list.dart';
 import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';

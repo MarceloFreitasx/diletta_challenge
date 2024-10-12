@@ -1,1 +1,1 @@
-export 'wishlist.dart';
+export 'wishlist/index.dart';
