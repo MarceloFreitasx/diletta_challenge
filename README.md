@@ -1,4 +1,4 @@
-# Experian Challenge
+# Diletta Challenge
 
 ![Flutter Version](https://badgen.net/badge/Flutter/3.24.3)
 
