@@ -65,6 +65,7 @@ You can run unit and integration tests using the following commands:
   ```bash
   flutter test --dart-define-from-file=lib/env/.env integration_test/
   ```
+  > _**Note**: To meet the project deadline, I prioritized testing the primary user flows in integration tests. I intend to revisit this project to add more comprehensive unit and integration tests, covering edge cases and alternative scenarios._
 
 ## Dependencies
 
