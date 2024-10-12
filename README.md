@@ -43,8 +43,10 @@ Follow these steps to set up the project:
 4. Run `flutter pub get` to install dependencies.
 5. Run `dart run build_runner build` to run the code generator.
 6. Copy the `.env.example` file to `lib/env` and rename it to `.env`. Fill in the required values.
-7. Use the following command to run the app with the correct environment configuration:
 
+   **(**Note**: I used a fake API for this project: `https://api.escuelajs.co/api/v1`)**.
+
+7. Use the following command to run the app with the correct environment configuration:
    ```bash
    flutter run --dart-define-from-file=lib/env/.env
    ```
