@@ -10,7 +10,7 @@ ThemeData get lightTheme => ThemeData(
           statusBarIconBrightness: Brightness.dark,
           statusBarColor: Colors.transparent,
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.cultured,
         foregroundColor: AppColors.black,
         elevation: 0,
         titleTextStyle: AppTextStyle.body1,

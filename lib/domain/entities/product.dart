@@ -20,4 +20,6 @@ class ProductEntity {
     this.updatedAt,
     this.category,
   });
+
+  String get finalPrice => price == null ? '' : "\$${price!.toStringAsFixed(2)}";
 }
