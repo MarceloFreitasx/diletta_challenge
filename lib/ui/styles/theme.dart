@@ -6,18 +6,18 @@ import 'styles.dart';
 ThemeData get lightTheme => ThemeData(
       appBarTheme: const AppBarTheme(
         systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarBrightness: Brightness.light,
-          statusBarIconBrightness: Brightness.light,
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.dark,
           statusBarColor: Colors.transparent,
         ),
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.cultured,
+        backgroundColor: Colors.transparent,
+        foregroundColor: AppColors.black,
         elevation: 0,
         titleTextStyle: AppTextStyle.body1,
         centerTitle: true,
       ),
       canvasColor: Colors.white,
-      scaffoldBackgroundColor: Colors.white,
+      scaffoldBackgroundColor: AppColors.cultured,
       fontFamily: 'DMSans',
       colorScheme: const ColorScheme.light(
         primary: AppColors.primary,
