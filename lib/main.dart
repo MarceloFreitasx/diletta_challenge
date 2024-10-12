@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'env/env.dart';
-import 'ui/pages/pages.dart';
+import 'presentation/navigator/navigator.dart';
 
 void main() => Env();
 
@@ -11,9 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       title: 'Experian Challenge',
-      home: HomePage(),
+      getPages: PagesRoutes.routes,
+      initialRoute: PagesRoutes.initial,
     );
   }
 }
