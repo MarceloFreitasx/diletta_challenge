@@ -8,8 +8,13 @@ import '../mixins/mixins.dart';
 import '../navigator/navigator.dart';
 
 class WishlistControllerImpl with WishlistManager, DebouncerManager implements WishlistController {
+  WishlistControllerImpl(this.wishlistMediator);
+
   @override
-  List<ProductEntity> get products => WishlistMediator.instance.filteredWishlist;
+  final WishlistMediator wishlistMediator;
+
+  @override
+  List<ProductEntity> get products => wishlistMediator.filteredWishlist;
 
   @override
   TextEditingController searchController = TextEditingController();
@@ -22,7 +27,7 @@ class WishlistControllerImpl with WishlistManager, DebouncerManager implements W
   @override
   void onSearch() {
     debouncerRun(() {
-      WishlistMediator.instance.onSearch(searchController.text);
+      wishlistMediator.onSearch(searchController.text);
     });
   }
 }

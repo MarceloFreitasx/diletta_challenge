@@ -3,11 +3,13 @@ import '../../domain/mixins/mixins.dart';
 import '../../domain/services/services.dart';
 
 mixin WishlistManager implements WishlistMixin {
+  WishlistMediator get wishlistMediator;
+
   @override
-  bool isFavorited(ProductEntity item) => WishlistMediator.instance.hasProduct(item);
+  bool isFavorited(ProductEntity item) => wishlistMediator.hasProduct(item);
 
   @override
   void onFavoriteProductTap(ProductEntity item) {
-    WishlistMediator.instance.add(item);
+    wishlistMediator.add(item);
   }
 }

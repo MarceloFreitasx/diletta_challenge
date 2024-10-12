@@ -5,8 +5,6 @@ import '../../usecases/usecases.dart';
 import 'index.dart';
 
 abstract class WishlistMediator with WishlistSearch {
-  static WishlistMediator get instance => Get.find();
-
   List<ProductEntity> get wishlist;
   List<ProductEntity> get filteredWishlist;
 

@@ -13,9 +13,11 @@ import '../navigator/navigator.dart';
 class HomeControllerImpl extends GetxController
     with LoadingManager, DebouncerManager, PaginationManager, WishlistManager
     implements HomeController {
-  HomeControllerImpl(this.productsListUseCase);
+  HomeControllerImpl(this.productsListUseCase, this.wishlistMediator);
 
   final GetProductsListUseCase productsListUseCase;
+  @override
+  final WishlistMediator wishlistMediator;
 
   final _products = <ProductEntity>[].obs;
   final _options = OptionsParams();
@@ -24,7 +26,7 @@ class HomeControllerImpl extends GetxController
   List<ProductEntity> get products => _products;
 
   @override
-  int get amountOfWishlistedProducts => WishlistMediator.instance.wishlist.length;
+  int get amountOfWishlistedProducts => wishlistMediator.wishlist.length;
 
   @override
   void onInit() {
