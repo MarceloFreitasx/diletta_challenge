@@ -11,6 +11,7 @@ class ProductCard extends StatelessWidget {
     required this.imageUrl,
     required this.price,
     this.isFavorited = false,
+    this.heroTag,
     this.onPressed,
     this.onFavorite,
   });
@@ -19,6 +20,7 @@ class ProductCard extends StatelessWidget {
   final String imageUrl;
   final String price;
   final bool isFavorited;
+  final String? heroTag;
   final VoidCallback? onPressed;
   final VoidCallback? onFavorite;
 
@@ -29,15 +31,18 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          BackgroundNetworkImage(
-            height: 200,
-            imageUrl: imageUrl,
-            alignment: Alignment.topRight,
-            fit: BoxFit.cover,
-            borderRadius: BorderRadius.circular(15),
-            child: FavoriteButton(
-              isFavorited: isFavorited,
-              onPressed: onFavorite,
+          Hero(
+            tag: heroTag ?? imageUrl,
+            child: BackgroundNetworkImage(
+              height: 200,
+              imageUrl: imageUrl,
+              alignment: Alignment.topRight,
+              fit: BoxFit.cover,
+              borderRadius: BorderRadius.circular(15),
+              child: FavoriteButton(
+                isFavorited: isFavorited,
+                onPressed: onFavorite,
+              ),
             ),
           ),
           const SizedBox(height: 5),

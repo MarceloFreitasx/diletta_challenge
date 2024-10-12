@@ -30,6 +30,7 @@ class HomeProductsList extends GetView<HomeController> {
                     title: item.title ?? '',
                     imageUrl: item.images?.first ?? '',
                     price: item.finalPrice,
+                    heroTag: item.id.toString(),
                     onPressed: () => controller.onProductTap(item),
                   );
                 },

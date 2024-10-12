@@ -5,7 +5,7 @@ class BackgroundNetworkImage extends StatelessWidget {
   const BackgroundNetworkImage({
     super.key,
     required this.imageUrl,
-    required this.child,
+    this.child,
     this.width,
     this.height,
     this.borderRadius,
@@ -14,7 +14,7 @@ class BackgroundNetworkImage extends StatelessWidget {
   });
 
   final String imageUrl;
-  final Widget child;
+  final Widget? child;
   final double? width;
   final double? height;
   final BorderRadius? borderRadius;
