@@ -31,30 +31,32 @@ class WishlistPage extends GetView<WishlistController> {
               ),
             ),
           ),
-          Obx(() => SliverPadding(
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                sliver: SliverGrid.builder(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    childAspectRatio: .62,
-                    crossAxisSpacing: 15,
-                    mainAxisSpacing: 15,
+          Obx(() => controller.products.isEmpty
+              ? const SliverFillRemaining(child: WishlistEmpty())
+              : SliverPadding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  sliver: SliverGrid.builder(
+                    gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 200,
+                      childAspectRatio: .62,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15,
+                    ),
+                    itemBuilder: (context, index) {
+                      final item = controller.products[index];
+                      return ProductCard(
+                        title: item.title ?? '',
+                        imageUrl: item.images?.first ?? '',
+                        price: item.finalPrice,
+                        heroTag: item.id.toString(),
+                        isFavorited: true,
+                        onFavorite: () => controller.onFavoriteProductTap(item),
+                        onPressed: () => controller.onProductTap(item),
+                      );
+                    },
+                    itemCount: controller.products.length,
                   ),
-                  itemBuilder: (context, index) {
-                    final item = controller.products[index];
-                    return ProductCard(
-                      title: item.title ?? '',
-                      imageUrl: item.images?.first ?? '',
-                      price: item.finalPrice,
-                      heroTag: item.id.toString(),
-                      isFavorited: true,
-                      onFavorite: () => controller.onFavoriteProductTap(item),
-                      onPressed: () => controller.onProductTap(item),
-                    );
-                  },
-                  itemCount: controller.products.length,
-                ),
-              )),
+                )),
         ],
       ),
     );
