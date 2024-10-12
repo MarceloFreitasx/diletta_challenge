@@ -19,6 +19,8 @@ dependencies:
   #F
   flutter:
     sdk: flutter
+  #G
+  get: ^4.6.6
 
 dev_dependencies:
   #F
