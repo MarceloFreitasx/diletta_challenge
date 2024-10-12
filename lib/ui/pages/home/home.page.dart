@@ -20,10 +20,10 @@ class HomePage extends GetView<HomeController> {
               actions: [
                 IconButton(
                   onPressed: controller.onFavoriteTap,
-                  icon: Badge.count(
-                    count: 2,
-                    child: const Icon(Icons.favorite_border_rounded),
-                  ),
+                  icon: Obx(() => Badge.count(
+                        count: controller.amountOfWishlistedProducts,
+                        child: const Icon(Icons.favorite_border_rounded),
+                      )),
                 ),
                 const IconButton(
                   icon: Icon(Icons.shopping_cart),

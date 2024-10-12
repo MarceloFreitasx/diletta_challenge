@@ -2,8 +2,11 @@ import 'package:get/get.dart';
 
 import '../../domain/entities/product.dart';
 import '../../ui/pages/pages.dart';
+import '../mixins/mixins.dart';
 
-class DetailsControllerImpl extends GetxController implements DetailsController {
+class DetailsControllerImpl extends GetxController
+    with WishlistManager
+    implements DetailsController {
   final _product = Rxn<ProductEntity>();
 
   @override

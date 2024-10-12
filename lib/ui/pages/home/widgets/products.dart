@@ -26,13 +26,15 @@ class HomeProductsList extends GetView<HomeController> {
                 ),
                 itemBuilder: (context, index) {
                   final item = controller.products[index];
-                  return ProductCard(
-                    title: item.title ?? '',
-                    imageUrl: item.images?.first ?? '',
-                    price: item.finalPrice,
-                    heroTag: item.id.toString(),
-                    onPressed: () => controller.onProductTap(item),
-                  );
+                  return Obx(() => ProductCard(
+                        title: item.title ?? '',
+                        imageUrl: item.images?.first ?? '',
+                        price: item.finalPrice,
+                        heroTag: item.id.toString(),
+                        isFavorited: controller.isFavorited(item),
+                        onFavorite: () => controller.onFavoriteProductTap(item),
+                        onPressed: () => controller.onProductTap(item),
+                      ));
                 },
                 itemCount: controller.products.length,
               ),

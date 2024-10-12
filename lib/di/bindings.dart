@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
-import '../data/datasources/datasources.dart';
 import '../data/services/services.dart';
-import '../domain/repositories/repositories.dart';
+import '../domain/services/services.dart';
+import '../domain/usecases/usecases.dart';
 import '../infra/infra.dart';
 import 'di.dart';
 
@@ -11,15 +11,18 @@ class AppBindings extends Bindings {
   void dependencies() {
     //? Services
     Get.put<HttpClient>(HttpService());
+    Get.put<LocalStorageClient>(LocalStorageService("wishlist"));
 
     //? Repositories
-    Get.lazyPut<ProductRepository>(
-      () => RemoteProductsDataSource(httpClient: Get.find<HttpClient>()),
-      fenix: true,
-    );
-
+    RepositoriesBindings.init();
     //? UseCases
     UseCasesBindings.init();
+    //? Mediators
+    Get.put<WishlistMediator>(WishlistMediatorImpl(
+      Get.find<GetFavoriteProductsListUseCase>(),
+      Get.find<AddFavoriteProductUseCase>(),
+      Get.find<RemoveFavoriteProductUseCase>(),
+    ));
     //? Controllers
     ControllersBindings.init();
   }

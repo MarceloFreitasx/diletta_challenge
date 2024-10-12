@@ -1,16 +1,23 @@
+import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
+
 import 'entities.dart';
 
-class ProductEntity {
-  int? id;
-  String? title;
-  double? price;
-  String? description;
-  List<String>? images;
-  DateTime? creationAt;
-  DateTime? updatedAt;
-  CategoryEntity? category;
+part 'product.g.dart';
 
-  ProductEntity({
+@immutable
+@JsonSerializable()
+class ProductEntity {
+  final int? id;
+  final String? title;
+  final double? price;
+  final String? description;
+  final List<String>? images;
+  final DateTime? creationAt;
+  final DateTime? updatedAt;
+  final CategoryEntity? category;
+
+  const ProductEntity({
     this.id,
     this.title,
     this.price,
@@ -22,4 +29,8 @@ class ProductEntity {
   });
 
   String get finalPrice => price == null ? '' : "\$${price!.toStringAsFixed(2)}";
+
+  factory ProductEntity.fromJson(Map<String, dynamic> json) => _$ProductEntityFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProductEntityToJson(this);
 }

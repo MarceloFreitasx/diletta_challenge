@@ -35,6 +35,8 @@ class WishlistPage extends GetView<WishlistController> {
                       imageUrl: item.images?.first ?? '',
                       price: item.finalPrice,
                       heroTag: item.id.toString(),
+                      isFavorited: true,
+                      onFavorite: () => controller.onFavoriteProductTap(item),
                       onPressed: () => controller.onProductTap(item),
                     );
                   },

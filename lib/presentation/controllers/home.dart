@@ -4,13 +4,14 @@ import 'package:get/get.dart';
 
 import '../../domain/entities/product.dart';
 import '../../domain/params/params.dart';
+import '../../domain/services/wishlist.dart';
 import '../../domain/usecases/products_list.dart';
 import '../../ui/pages/pages.dart';
 import '../mixins/mixins.dart';
 import '../navigator/navigator.dart';
 
 class HomeControllerImpl extends GetxController
-    with LoadingManager, DebouncerManager, PaginationManager
+    with LoadingManager, DebouncerManager, PaginationManager, WishlistManager
     implements HomeController {
   HomeControllerImpl(this.productsListUseCase);
 
@@ -23,6 +24,9 @@ class HomeControllerImpl extends GetxController
   List<ProductEntity> get products => _products;
 
   @override
+  int get amountOfWishlistedProducts => WishlistMediator.instance.wishlist.length;
+
+  @override
   void onInit() {
     loadProducts();
     super.onInit();
@@ -33,11 +37,11 @@ class HomeControllerImpl extends GetxController
 
     try {
       setLoadingStarted();
-      final characters = await productsListUseCase.execute(_options);
+      final products = await productsListUseCase.execute(_options);
       if (loadMore) {
-        _products.addAll(characters);
+        _products.addAll(products);
       } else {
-        _products.assignAll(characters);
+        _products.assignAll(products);
       }
       setLoadingCompleted();
     } catch (e) {

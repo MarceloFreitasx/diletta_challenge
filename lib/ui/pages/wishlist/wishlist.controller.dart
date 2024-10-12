@@ -1,8 +1,8 @@
 import '../../../domain/entities/entities.dart';
+import '../../../domain/mixins/mixins.dart';
 
-abstract class WishlistController {
+abstract class WishlistController with WishlistMixin {
   List<ProductEntity> get products;
 
-  void onFavoriteTap();
   void onProductTap(ProductEntity item);
 }

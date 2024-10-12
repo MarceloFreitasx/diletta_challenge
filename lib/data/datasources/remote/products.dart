@@ -6,14 +6,14 @@ import '../../models/models.dart';
 import '../../services/services.dart';
 
 class RemoteProductsDataSource implements ProductRepository {
-  RemoteProductsDataSource({required this.httpClient});
+  RemoteProductsDataSource({required this.client});
 
-  final HttpClient httpClient;
+  final HttpClient client;
 
   @override
   Future<List<ProductEntity>> getProducts(OptionsParams options) async {
     try {
-      final request = await httpClient.request(
+      final request = await client.request(
         method: HttpMethod.get,
         url: "/products",
         data: options.toMap(),

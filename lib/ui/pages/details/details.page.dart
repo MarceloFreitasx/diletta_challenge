@@ -18,10 +18,10 @@ class DetailsPage extends GetView<DetailsController> {
             SliverAppBar.large(
               pinned: true,
               actions: [
-                FavoriteButton(
-                  isFavorited: true,
-                  onPressed: () {},
-                ),
+                Obx(() => FavoriteButton(
+                      isFavorited: controller.isFavorited(controller.product),
+                      onPressed: () => controller.onFavoriteProductTap(controller.product),
+                    )),
               ],
               expandedHeight: 380,
               stretchTriggerOffset: 600.0,

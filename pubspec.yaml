@@ -22,13 +22,21 @@ dependencies:
     sdk: flutter
   #G
   get: ^4.6.6
+  #J
+  json_annotation: ^4.9.0
+  #S
+  shared_preferences: ^2.3.2
 
 dev_dependencies:
+  #B
+  build_runner: ^2.4.13
   #F
   faker: ^2.2.0
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  #J
+  json_serializable: ^6.8.0
   #M
   mocktail: ^1.0.4
   #N
