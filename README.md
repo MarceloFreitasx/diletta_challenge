@@ -14,6 +14,8 @@ This mobile application utilizes the following technologies:
 - **Data Persistence**
 - **API Communication**
 
+> _To ensure smooth performance, especially with large wishlists, I used isolates to offload computationally intensive wishlist search operations to a separate thread, preventing UI freezes._
+
 ## Architecture Overview (Clean Architecture)
 
 The project follows the Clean Architecture principles, with the following directory structure:
